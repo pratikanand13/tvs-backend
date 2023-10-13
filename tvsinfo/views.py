@@ -4,8 +4,9 @@ from django.http import JsonResponse
 from .utils.globalUserPred import *
 from .utils.localUserPred import *
 
+baseInterest = 6
+
 def getInterestRate(score):
-    baseInterest = 6
     maxBias = 10
     stp = 1 / 90
     bias = ((score - 40) ** 2) * stp
@@ -44,7 +45,7 @@ class pageone(APIView):
 
             result = 100 * localUserPred(Bouncedinfirst,nob12m,MaxMob,bouncedwhilerepaying,Emi,Loan_Amount,Tenure,advance_EMI,Roi,Customer_agewtk,Noofloans,Noosc,Noousc,maxamtsanc,no30d6,no60d6,no90d3,age,Dealercodes,Productcodes,Gender_WOE,Et_WOE,Rt_WOE,Tier_WOE)
             
-            context_data = {'result': result , 'interestRate': getInterestRate(result) if result <= 70 else 0}
+            context_data = {'result': result , 'interestRate': baseInterest if result <= 40 else (getInterestRate(result) if result <= 70 else 0)}
             return JsonResponse(context_data)
     
 class Check(APIView):
@@ -73,5 +74,5 @@ class Check(APIView):
        number_of_inquiries=int(request.data.get('number_of_inquiries'))
 
        result = 100 * globalUserPred( disbursed_amount, asset_cost, loan_to_value_ratio, primary_disbursed_amount, primary_current_balance, primary_sanctioned_amount, primary_overdue_accounts, primary_active_accounts, primary_number_of_accounts, primary_installment_amount, secondary_disbursed_amount, secondary_current_balance, secondary_sanctioned_amount, secondary_overdue_accounts, secondary_active_accounts, secondary_number_of_accouts, secondary_installment_amount, perform_cns_score, deliquent_accounts, new_accounts, number_of_inquiries, employment_type)
-       context_data = {'result': result , 'interestRate': getInterestRate(result) if result <= 70 else 0}
+       context_data = {'result': result , 'interestRate': baseInterest if result <= 40 else (getInterestRate(result) if result <= 70 else 0)}
        return JsonResponse(context_data)
