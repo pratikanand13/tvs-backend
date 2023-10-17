@@ -16,15 +16,6 @@ def getInterestRate(score):
 class pageone(APIView):
     def post(self, request):
             Bouncedinfirst = int(request.data.get('bounced_in_first_emi'))
-            # def bounced(bif):
-            #     if bif == 'true':
-            #         bif= 1
-            #     elif bif == 'false':
-            #        bif = 0
-        
-            #     return bif 
-    
-            # Bouncedinfirst= int(bounced(Bouncedinfirst))
             nob12m = int(request.data.get('twelve_month_bounce_history'))
             MaxMob = int(request.data.get('maximum_mob'))
             bouncedwhilerepaying = int(request.data.get('bounced_while_repaying'))
@@ -42,7 +33,7 @@ class pageone(APIView):
             no60d6 = int(request.data.get('sixty_days'))
             no90d3 = int(request.data.get('ninety_days'))
             age = int(request.data.get('age_of_vehicle'))
-            Dealercodes = int(request.data.get('dealer_code'))
+            Dealercodes = float(request.data.get('dealer_code'))
             Tier_WOE = int(request.data.get('tier'))
 
             def Tier(Tier_WOE):
@@ -121,7 +112,7 @@ class pageone(APIView):
             answer = 100 * localUserPred(Bouncedinfirst,nob12m,MaxMob,bouncedwhilerepaying,Emi,Loan_Amount,Tenure,advance_EMI,Roi,Customer_agewtk,Noofloans,Noosc,Noousc,maxamtsanc,no30d6,no60d6,no90d3,age,Dealercodes,Productcodes,Gender_WOE,Et_WOE,Rt_WOE,Tier_WOE)
             result = round(answer,2)
             interest = round(getInterestRate(result),2)
-            context_data = {'result': result , 'interestRate': baseInterest if result <= 40 else interest if result <= 70 else 0}
+            context_data = {'result': 100-result , 'interestRate': baseInterest if result <= 40 else interest if result <= 70 else 0}
             return JsonResponse(context_data)
     
 class Check(APIView):
