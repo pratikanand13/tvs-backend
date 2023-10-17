@@ -32,7 +32,7 @@ def globalUserPred(disbursed_amount, asset_cost, loan_to_value_ratio,  perform_c
     
     # print(vals)
     # print(emp)
-    return model(disbursed_amount, asset_cost, loan_to_value_ratio, perform_cns_score, primary_number_of_accounts, primary_active_accounts, primary_overdue_accounts, primary_current_balance, primary_sanctioned_amount, primary_disbursed_amount,secondary_number_of_accouts,secondary_active_accounts,secondary_current_balance,secondary_sanctioned_amount,secondary_disbursed_amount,primary_installment_amount,secondary_installment_amount,new_accounts, deliquent_accounts, number_of_inquiries,emp[0], emp[1], vals[0],vals[1],vals[2], vals[3],vals[4],vals[5],vals[6],vals[7],vals[8], vals[9],vals[10],vals[11], vals[12], vals[13], vals[14])
+    return model(disbursed_amount, asset_cost, loan_to_value_ratio, perform_cns_score, primary_number_of_accounts, primary_active_accounts, primary_overdue_accounts, primary_current_balance, primary_sanctioned_amount, primary_disbursed_amount,secondary_number_of_accouts,secondary_active_accounts,secondary_current_balance,secondary_sanctioned_amount,secondary_disbursed_amount,primary_installment_amount,secondary_installment_amount       ,new_accounts, deliquent_accounts, number_of_inquiries,emp[0], emp[1], vals[0],vals[1],vals[2], vals[3],vals[4],vals[5],vals[6],vals[7],vals[8], vals[9],vals[10],vals[11], vals[12], vals[13], vals[14])
 
 
 
