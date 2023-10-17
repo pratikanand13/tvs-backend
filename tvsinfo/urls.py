@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import pageone, Check
+from .views import pageone, pagetwo
 
 urlpatterns = [
-    path('local/', pageone.as_view(), name='langing'),
-    path('global/', Check.as_view(), name='ck'),
+    path('local/', pageone.as_view(), name='local'),
+    path('global/', pagetwo.as_view(), name='global'),
  ]

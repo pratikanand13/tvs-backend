@@ -115,7 +115,7 @@ class pageone(APIView):
             context_data = {'result': 100-result , 'interestRate': baseInterest if result <= 40 else interest if result <= 70 else 0}
             return JsonResponse(context_data)
     
-class Check(APIView):
+class pagetwo(APIView):
     def post(self, request):
        disbursed_amount= int(request.data.get('disbursed_amount')) / 80
        asset_cost=int(request.data.get('asset_cost')) / 80
